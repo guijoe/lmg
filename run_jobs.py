@@ -23,7 +23,7 @@ for folder in folders:
     iterations = 125
     
     if not cell_surfaces:
-        subdivisions = 3
+        subdivisions = 5
     
     #command += "python3 main.py " + (folder_path) + " " + str(subdivisions) + " " + str(iterations) + " " + str(cell_surfaces) + " &"
     os.system("python3 main.py " + (folder_path) + " " + str(subdivisions) + " " + str(iterations) + " " + str(cell_surfaces))

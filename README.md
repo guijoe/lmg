@@ -2,7 +2,7 @@
 
 Hello world! Welcome to LMG "Lagrangian Meshes Generator", a python-based image processing tool able to generate dynamic geometric meshes from time-lapse images of continuous processes. 
 
-![Alt text](https://github.com/guijoe/MGSharpCore/blob/master/images/Invagination.GIF "Invagination")
+![Alt text](https://github.com/guijoe/lmg/blob/main/img/lmg.gif "Invagination")
 
 ### Brief Description ###
 
@@ -10,30 +10,32 @@ Hello world! Welcome to LMG "Lagrangian Meshes Generator", a python-based image 
 * Hence, the positions of these vertices, connected by a fixed network, can be used to compute all sorts of quantitative indicators, including continuum fields such as velocity, strain, strain-rate, etc. suitable for an in-depth study of the processes at play in the movies.
 * The process of interest could cover a wide range of scenarii, basically, anything that can be store as a time-lapse movie of voxel. Our motivation for this project came from datasets of developing asicidian embryos, as can be seem on the picture above. Thanks to the morphonet dependency (https://morphonet.org/help_api), most image formats are supported (inr, tif, etc.).
 
-### Running a simulation with MG# ###
+### LMG Parameters ###
 
-* MG#Core can be used with any leading PC Operation Systems (Windows, Linux, Mac OS) thanks to the cross-platform abilities of .NET.
-* Building simulations with MG# requires installing .NET Core SDK (https://dotnet.microsoft.com/download). Windows users may also make use of the native .NET framework.
-* A simulation can only be runned from a "Main" code file (file with the "Main" function). The "Main" file must be compiled, and the resulting executable file runned. This goes without saying that the path to the file must be referenced, either by being in its parent directory or by explicitly specifying it in the file path.
-    
-#### Windows
-	dotnet build
-	dotnet run
+In the file "run_jobs.py":
+
+* Enter the folder or folders of your imaging data by setting the variables "root_folder" and "folders".
+* Set the variable "cell_surfaces" to determine whether the meshes should be generated at the cellular (segmented objects) or embryonic (whole data) level. If cell_surfaces = True, the meshes will be generated at the cellular level. If false, the meshes will be generated at the embryonic level. 
+* Set the variable "subdivisions". Initial meshes are obtained by succevise "butterfly" subdivisions of an icosahedron. The variable "subdivisions" indirectly sets the number of vertices of the mesh by determining the number of subdivisions. The following relation holds: if subdivisions = N, number of vertices = 10*4^N + 2 (e.g, N = {0,1,2,3,4,5,...}, Number of vertices = {12,42,162,642,2562,10242,...})
+
+### Run LMG ###
+On the terminal, run the following command:
+
+	python run_jobs.py
+
+This command runs the lagrangian mesh code, computes lagrangian mesh associated with the input image files and stores in the .obj format in the obj folder.
+
+### Further uses ###
+Having computed lagrangian meshes, further analysis can be carried on the meshes by computing for example kinematic fields. The code in "strainrate.py" computes the strain rate tensor field associate the dynamics of the computed evolving mesh. These quantities can be rendered on the mesh using available tools like paraview, or custom code. Here is a renderer of a scalar field derived from the strain rate tensor on the evolving mesh of developing ascidian embryos.
+
+![Alt text](https://github.com/guijoe/lmg/blob/main/img/asc_dev.png "Ascidian embryos")
 	
-#### Linux 
-	dotnet build
-	dotnet run
-	
-#### Mac OS 
-	dotnet build
-	dotnet run
+### Further reading ###
 
-### Designing and programming a simulation ###
+This work was carried out as part of the following publication
 
-* Programming a new simulation is as simple as creating a new class inheriting from the Simulator class. The tutorial presented throughout this text describes the code that produces the Invagination simulation showcased above.
+	Dokmegang, Joel, Emmanuel Faure, Patrick Lemaire, Ed Munro, and Madhav Mani. "Spectral decomposition unlocks ascidian morphogenesis." bioRxiv (2023): 2023-08.
 
-![Alt text](https://github.com/guijoe/MGSharpCore/blob/master/images/Invagination.PNG "Set Model")
-	
-* Any class inheriting from Simulator must override its Abstract methods, which are mandatory. The following code adds these methods to our new class, including the Main method, to make this class runnable.
+The data used was first published
 
-![Alt text](https://github.com/guijoe/MGSharpCore/blob/master/images/Methods.PNG "Methods")
+	Guignard, Léo, Ulla-Maj Fiúza, Bruno Leggio, Julien Laussu, Emmanuel Faure, Gaël Michelin, Kilian Biasuz et al. "Contact area–dependent cell communication and the morphological invariance of ascidian embryogenesis." Science 369, no. 6500 (2020): eaar5663.

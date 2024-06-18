@@ -31,8 +31,7 @@ def compute_eigenvalues_eigenvectors(tensor):
 start_time_batch = time.time()
 
 # Specify the folder containing input and output folders
-#input_folder = "../UsefulLogs/3009_all/UsefulLogs_StrainInference3D_717797914938.3593/obj/"
-input_folder = "/Users/joeld/Downloads/Astec-Pm1_old/emb/N=2/"
+input_folder = "./obj/embryo1/emb/"
 output_folder = input_folder
 
 # List all files in the folder
