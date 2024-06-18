@@ -2,7 +2,7 @@
 
 Hello world! Welcome to LMG "Lagrangian Meshes Generator", a python-based image processing tool able to generate dynamic geometric meshes from time-lapse images of continuous processes. 
 
-![Alt text](https://github.com/guijoe/lmg/blob/main/img/lmg.gif "Invagination")
+![Alt text](https://github.com/guijoe/lmg/blob/main/img/lmg.png "Invagination")
 
 ### Brief Description ###
 
@@ -32,10 +32,10 @@ Having computed lagrangian meshes, further analysis can be carried on the meshes
 	
 ### Further reading ###
 
-This work was carried out as part of the following publication
+This work was carried out as part of the [following publication](https://elifesciences.org/reviewed-preprints/94391)
 
 	Dokmegang, Joel, Emmanuel Faure, Patrick Lemaire, Ed Munro, and Madhav Mani. "Spectral decomposition unlocks ascidian morphogenesis." bioRxiv (2023): 2023-08.
 
-The data used was first published
+The data used was first published [here](https://www.science.org/doi/full/10.1126/science.aar5663)
 
 	Guignard, Léo, Ulla-Maj Fiúza, Bruno Leggio, Julien Laussu, Emmanuel Faure, Gaël Michelin, Kilian Biasuz et al. "Contact area–dependent cell communication and the morphological invariance of ascidian embryogenesis." Science 369, no. 6500 (2020): eaar5663.
